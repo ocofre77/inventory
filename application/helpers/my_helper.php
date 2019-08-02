@@ -76,12 +76,13 @@ if ( ! function_exists('currency'))
             //echo $a = 10*0.012;
             //echo $val."<br>";
             //echo $exchange_rate."<br>";
-            $val = $val*$exchange_rate;
+            //echo ((double)$val * (double)$exchange_rate)."<br>";
+            $val = (double)$val*(double)$exchange_rate;
             if($def == 'only_val'){
                 return number_format($val,$no_of_decimal);
             } else {
                 if($symbol_format == 's_amount'){
-                    return $symbol.'&nbsp;'.number_format($val,$no_of_decimal,$dec_point,$thousand_sep);
+                    return $symbol.'&nbsp;'.number_format((double)$val,$no_of_decimal,$dec_point,$thousand_sep);
                 }else{
                     return number_format($val,$no_of_decimal,$dec_point,$thousand_sep).$symbol;
                 }
